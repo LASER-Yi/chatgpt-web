@@ -8,11 +8,13 @@ import {
 } from "@mantine/core";
 import { AppProps } from "next/app";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
 
 import { BsGearFill } from "react-icons/bs";
 
 const Header: FunctionComponent = () => {
+  const router = useRouter();
   return (
     <MantineHeader height={{ base: 50 }}>
       <Group
@@ -26,7 +28,15 @@ const Header: FunctionComponent = () => {
           </Badge>
         </Group>
         <Group>
-          <Button variant="light" radius="sm" compact disabled>
+          <Button
+            variant="light"
+            color="gray"
+            radius="sm"
+            compact
+            onClick={() => {
+              router.push("/settings");
+            }}
+          >
             <BsGearFill />
           </Button>
         </Group>

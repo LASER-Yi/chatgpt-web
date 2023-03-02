@@ -28,7 +28,9 @@ const Chat: FunctionComponent = () => {
         <Sidebar
           sessions={sessions}
           selected={null}
-          onSelected={(id) => {}}
+          onSelected={(id) => {
+            // TODO
+          }}
           onCreated={newSession}
         ></Sidebar>
       </Grid.Col>
