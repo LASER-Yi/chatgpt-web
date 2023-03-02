@@ -1,24 +1,42 @@
-import {
-  Avatar,
-  Button,
-  Divider,
-  Group,
-  ScrollArea,
-  Stack,
-} from "@mantine/core";
-import { FunctionComponent } from "react";
+import { Session } from "@/components/Session";
+import { Button, ScrollArea, Stack } from "@mantine/core";
+import { FunctionComponent, useMemo } from "react";
 
-const Sidebar: FunctionComponent = () => {
+interface SidebarProps {
+  selected: string | null;
+  sessions: Chat.Session[];
+  onSelected: (id: string) => void;
+  onCreated: () => void;
+}
+
+const Sidebar: FunctionComponent<SidebarProps> = ({
+  selected,
+  sessions,
+  onSelected,
+  onCreated,
+}) => {
+  const sessionElements: React.ReactElement[] = useMemo(
+    () =>
+      sessions.map((value) => (
+        <Session key={value.id} active={false}>
+          {value.name}
+        </Session>
+      )),
+    [sessions]
+  );
+
   return (
     <Stack sx={{ height: "100%" }} spacing="xs">
-      <Button fullWidth variant="outline" color="gray">
+      <Button fullWidth variant="outline" color="gray" onClick={onCreated}>
         New Chat
       </Button>
-      <ScrollArea sx={{ height: "100%", flexGrow: 1 }}></ScrollArea>
-      <Divider></Divider>
+      <ScrollArea sx={{ height: "100%", flexGrow: 1 }}>
+        {sessionElements}
+      </ScrollArea>
+      {/* <Divider></Divider>
       <Group position="left">
         <Avatar size="md" radius="xl"></Avatar>
-      </Group>
+      </Group> */}
     </Stack>
   );
 };

@@ -15,7 +15,7 @@ export const Session: FunctionComponent<SessionProps> = ({
   return (
     <Card my="sm" radius="sm" withBorder ref={ref}>
       <Card.Section p="sm">
-        <Group position="apart" align="center" grow>
+        <Group position="apart" align="center" grow sx={{ minHeight: "3rem" }}>
           <Text color="dimmed">{children}</Text>
           <Group spacing="sm" position="right" hidden={hovered === false}>
             {/* <Button variant="subtle" compact>
