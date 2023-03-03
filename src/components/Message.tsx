@@ -2,20 +2,21 @@ import { Avatar, Card, Flex, Stack, Text } from "@mantine/core";
 import { FunctionComponent } from "react";
 
 interface MessageProps {
+  timestamp: Date;
   children: string;
   response?: boolean;
 }
 
-const Message: FunctionComponent<MessageProps> = ({ children }) => {
+const Message: FunctionComponent<MessageProps> = ({ children, timestamp }) => {
   return (
     <Flex direction="row" align="flex-start" justify="flex-start">
       <Avatar radius="xl" color="blue"></Avatar>
       <Stack mx="md" spacing={0}>
         <Text color="dimmed" size="xs">
-          2023/01/01
+          {timestamp.toUTCString()}
         </Text>
-        <Card shadow="md" radius="md">
-          <Card.Section p="md">{children}</Card.Section>
+        <Card radius="md" withBorder>
+          <Card.Section p="sm">{children}</Card.Section>
         </Card>
       </Stack>
     </Flex>

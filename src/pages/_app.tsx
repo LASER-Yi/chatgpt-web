@@ -58,7 +58,6 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
 
       <MantineProvider withGlobalStyles withNormalizeCSS theme={{}}>
         <AppShell
-          padding="md"
           // navbar={
           //   <Navbar width={{ base: 300 }} height={500}>
           //     ChatGPT

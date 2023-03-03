@@ -1,7 +1,15 @@
-import Message from "@/components/Message";
+import ChatRoom from "@/components/ChatRoom";
 import { Sidebar } from "@/layouts/chat";
-import { Grid, ScrollArea } from "@mantine/core";
+import { createStyles, Grid } from "@mantine/core";
 import { FunctionComponent, useCallback, useState } from "react";
+
+const useStyles = createStyles((theme) => {
+  return {
+    sidebar: {
+      borderRight: `1px solid ${theme.colors.gray[3]}`,
+    },
+  };
+});
 
 const Chat: FunctionComponent = () => {
   const [sessions, setSessions] = useState<Chat.Session[]>([]);
@@ -16,15 +24,17 @@ const Chat: FunctionComponent = () => {
     // TODO
     const session: Chat.Session = {
       id: "todo",
-      name: "",
+      name: "New chat",
     };
 
     setSessions((value) => [session, ...value]);
   }, []);
 
+  const { classes } = useStyles();
+
   return (
     <Grid justify="flex-start" align="stretch" sx={{ height: "100%" }}>
-      <Grid.Col span={3}>
+      <Grid.Col span={3} className={classes.sidebar}>
         <Sidebar
           sessions={sessions}
           selected={null}
@@ -35,9 +45,7 @@ const Chat: FunctionComponent = () => {
         ></Sidebar>
       </Grid.Col>
       <Grid.Col span={9}>
-        <ScrollArea sx={{ height: "100%" }}>
-          <Message>This is a test message</Message>
-        </ScrollArea>
+        <ChatRoom></ChatRoom>
       </Grid.Col>
     </Grid>
   );
