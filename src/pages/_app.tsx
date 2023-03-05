@@ -64,6 +64,7 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
           //   </Navbar>
           // }
           header={<Header />}
+          padding={0}
         >
           <Component {...pageProps} />
         </AppShell>

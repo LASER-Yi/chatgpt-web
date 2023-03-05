@@ -26,8 +26,14 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
   );
 
   return (
-    <Stack sx={{ height: "100%" }} spacing="xs">
-      <Button fullWidth variant="outline" color="gray" onClick={onCreated}>
+    <Stack sx={{ height: "100%" }} spacing="xs" m="xs">
+      <Button
+        fullWidth
+        variant="outline"
+        color="gray"
+        onClick={onCreated}
+        disabled
+      >
         New Chat
       </Button>
       <ScrollArea sx={{ height: "100%", flexGrow: 1 }}>

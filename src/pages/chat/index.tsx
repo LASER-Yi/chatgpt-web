@@ -33,7 +33,13 @@ const Chat: FunctionComponent = () => {
   const { classes } = useStyles();
 
   return (
-    <Grid justify="flex-start" align="stretch" sx={{ height: "100%" }}>
+    <Grid
+      justify="flex-start"
+      align="stretch"
+      gutter="xs"
+      m={0}
+      sx={{ height: "100%" }}
+    >
       <Grid.Col span={3} className={classes.sidebar}>
         <Sidebar
           sessions={sessions}

@@ -1,5 +1,5 @@
-import { Avatar, Card, Flex, Stack, Text } from "@mantine/core";
-import { FunctionComponent } from "react";
+import { Card, Flex, Stack, Text } from "@mantine/core";
+import { FunctionComponent, useMemo } from "react";
 
 interface MessageProps {
   timestamp: Date;
@@ -7,10 +7,19 @@ interface MessageProps {
   response?: boolean;
 }
 
-const Message: FunctionComponent<MessageProps> = ({ children, timestamp }) => {
+const Message: FunctionComponent<MessageProps> = ({
+  children,
+  timestamp,
+  response,
+}) => {
+  const justify = useMemo(
+    () => (response === true ? "flex-start" : "flex-end"),
+    [response]
+  );
+
   return (
-    <Flex direction="row" align="flex-start" justify="flex-start">
-      <Avatar radius="xl" color="blue"></Avatar>
+    <Flex direction="row" align="flex-start" justify={justify}>
+      {/* <Avatar radius="xl" color="blue"></Avatar> */}
       <Stack mx="md" spacing={0}>
         <Text color="dimmed" size="xs">
           {timestamp.toUTCString()}
