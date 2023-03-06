@@ -1,11 +1,15 @@
 import { ChatGPTAPI } from "chatgpt";
 
 class ChatGPTAPIWrapper {
-  private api: ChatGPTAPI;
+  private api: ChatGPTAPI | null;
 
   constructor() {
+    this.api = null;
+  }
+
+  public initialize(apiKey: string) {
     this.api = new ChatGPTAPI({
-      apiKey: "",
+      apiKey,
     });
   }
 }

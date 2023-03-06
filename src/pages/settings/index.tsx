@@ -22,12 +22,12 @@ const Settings: FunctionComponent = () => {
 
   return (
     <Container px="xl">
-      <Title mb="md">Settings</Title>
+      <Title my="md">Settings</Title>
       <Form
         form={form}
         onSubmit={(values) => {
-          // TODO
-
+          // TODO: Fix SSR
+          // ApiWrapper.initialize(values.apiKey);
           router.push("/");
         }}
       >

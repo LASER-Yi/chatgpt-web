@@ -3,7 +3,9 @@ import { Button, Grid, ScrollArea, Stack, TextInput } from "@mantine/core";
 import { FunctionComponent, useState } from "react";
 import { BiPaperPlane } from "react-icons/bi";
 
-interface ChatRoomProps {}
+interface ChatRoomProps {
+  // messages:
+}
 
 const ChatRoom: FunctionComponent<ChatRoomProps> = () => {
   // TODO
