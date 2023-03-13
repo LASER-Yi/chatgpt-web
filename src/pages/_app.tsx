@@ -1,34 +1,32 @@
+import { useStaticData } from "@/utilities";
 import {
-  AppShell,
   Badge,
-  Button,
+  Container,
   Group,
   Header as MantineHeader,
   MantineProvider,
+  Stack,
 } from "@mantine/core";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
 
-import { BsGearFill } from "react-icons/bs";
-
 const Header: FunctionComponent = () => {
   const router = useRouter();
+
+  const { title } = useStaticData();
+
   return (
     <MantineHeader height={{ base: 50 }}>
-      <Group
-        position="apart"
-        noWrap
-        sx={{ height: "100%", paddingLeft: "1rem", paddingRight: "1rem" }}
-      >
+      <Group position="apart" noWrap sx={{ height: "100%" }}>
         <Group>
           <Badge size="lg" radius="sm">
-            ChatGPT
+            {title}
           </Badge>
         </Group>
         <Group>
-          <Button
+          {/* <Button
             variant="light"
             color="gray"
             radius="sm"
@@ -38,7 +36,7 @@ const Header: FunctionComponent = () => {
             }}
           >
             <BsGearFill />
-          </Button>
+          </Button> */}
         </Group>
       </Group>
     </MantineHeader>
@@ -57,17 +55,12 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
       </Head>
 
       <MantineProvider withGlobalStyles withNormalizeCSS theme={{}}>
-        <AppShell
-          // navbar={
-          //   <Navbar width={{ base: 300 }} height={500}>
-          //     ChatGPT
-          //   </Navbar>
-          // }
-          header={<Header />}
-          padding={0}
-        >
-          <Component {...pageProps} />
-        </AppShell>
+        <Container>
+          <Stack>
+            <Header></Header>
+            <Component {...pageProps} />
+          </Stack>
+        </Container>
       </MantineProvider>
     </>
   );

@@ -1,15 +1,22 @@
-import { Text } from "@mantine/core";
-import { useRouter } from "next/router";
-import { FunctionComponent, useEffect } from "react";
+import Product from "@/components/Product";
+import { useProducts } from "@/utilities";
+import { Grid } from "@mantine/core";
+import { FunctionComponent, useMemo } from "react";
 
 const Home: FunctionComponent = () => {
-  const router = useRouter();
+  const products = useProducts();
 
-  useEffect(() => {
-    router.push("./chat");
-  }, [router]);
+  const elements = useMemo(
+    () =>
+      products.map((prod, idx) => (
+        <Grid.Col key={idx} span={4}>
+          <Product product={prod}></Product>
+        </Grid.Col>
+      )),
+    [products]
+  );
 
-  return <Text>Redirecting...</Text>;
+  return <Grid gutter="md">{elements}</Grid>;
 };
 
 export default Home;
