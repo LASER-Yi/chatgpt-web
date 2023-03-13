@@ -20,7 +20,7 @@
     "@mantine/form": "^6.0.0",
     "@mantine/hooks": "^5.10.5",
     "@mantine/next": "^5.10.5",
-    "chatgpt": "^5.0.0",
+    "chatgpt": "^5.0.10",
     "next": "^13.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
